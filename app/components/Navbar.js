@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 import NavbarStore from '../stores/NavbarStore';
 import NavbarActions from '../actions/NavbarActions';
 
@@ -9,6 +9,7 @@ class Navbar extends React.Component {
     this.state = NavbarStore.getState();
     this.onChange = this.onChange.bind(this);
   }
+
   componentDidMount() {
     NavbarStore.listen(this.onChange);
     NavbarActions.getCharacterCount();
@@ -29,12 +30,15 @@ class Navbar extends React.Component {
       }, 750);
     });
   }
+
   componentWillUnmount() {
     NavbarStore.unlisten(this.onChange);
   }
+
   onChange(state) {
     this.setState(state);
   }
+
   handleSubmit(event) {
     event.preventDefault();
 
@@ -48,6 +52,7 @@ class Navbar extends React.Component {
       });
     }
   }
+
   render() {
     return (
       <nav className='navbar navbar-default navbar-static-top'>
